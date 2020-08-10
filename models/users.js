@@ -35,6 +35,15 @@ const userSchema = new mongoose.Schema({
 
 
 
+// create a user to task relationship
+// local field - owner stored in task is related to the user _id
+userSchema.virtual('post', {
+    ref: 'Post',
+    localField: '_id',
+    foreignField: 'postedBy'
+})
+
+
 
 // JSON.stringify is run in the background, our objects are stringify
 // to json method allows us to manipulate what we want back
