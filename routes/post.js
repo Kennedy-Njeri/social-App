@@ -4,7 +4,7 @@ const Post = require('../models/post')
 const auth = require('../auth/auth')
 
 
-
+// create a user post
 router.post('/createpost', auth, async (req, res) => {
     const { title, body } = req.body
 
@@ -26,4 +26,23 @@ router.post('/createpost', auth, async (req, res) => {
     }
 })
 
+// get all user posts
+router.get('/allpost', async (req, res) => {
+    try {
+
+        const posts = await Post.find().populate("postedBy", "_id name")
+
+        res.send(posts)
+
+    } catch (e) {
+
+        res.status(500).send(e)
+    }
+})
+
+
+
+
+
+module.exports = router
 

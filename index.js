@@ -1,7 +1,7 @@
 const express = require('express')
 require('./db/mongoose')
 const userRouter = require('./routes/users')
-// const blogRouter = require('./routes/blog')
+const postRouter = require('./routes/post')
 //require('./services/cache')
 
 
@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000
 app.use(express.json())
 
 
-app.use(userRouter)
+app.use(userRouter, postRouter)
 
 
 
