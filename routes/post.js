@@ -27,7 +27,7 @@ router.post('/createpost', auth, async (req, res) => {
 })
 
 // get all user posts
-router.get('/allpost', async (req, res) => {
+router.get('/allpost', auth, async (req, res) => {
     try {
 
         const posts = await Post.find().populate("postedBy", "_id name")
